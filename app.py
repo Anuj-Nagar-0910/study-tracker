@@ -2,12 +2,13 @@ from flask import Flask, render_template, request, redirect, url_for, flash
 from flask_sqlalchemy import SQLAlchemy
 from datetime import datetime
 import os
-app.secret_key = os.environ.get('SECRET_KEY', 'default_fallback_key') #For Development Purpose 
+
 app = Flask(__name__)
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///study_tracker.db'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 # app.secret_key = 'your_super_secret_key' # Needed for flash messages
-
+app.secret_key = os.environ.get('SECRET_KEY', 'default_fallback_key') #For Development Purpose 
+# Note: For production, ensure you set SECRET_KEY in Render's environment variables.
 db = SQLAlchemy(app)
 
 # Define the Day model

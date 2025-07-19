@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My IIT Bombay AI/ML Statistics Journey</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    </head>
+<body>
+    <header>
+        <div class="header-content">
+            <a href="{{ url_for('index') }}" class="header-logo-link">
+                <img src="{{ url_for('static', filename='XM_LOGO_07.png') }}" class="header-logo" alt="Xenagogue Logo">
+            </a>
+            <h1>My IIT Bombay AI/ML Statistics Journey</h1>
+            <nav>
+                <a href="{{ url_for('index') }}">Home</a>
+            </nav>
+        </div>
+    </header>
+    <main>
+        {% with messages = get_flashed_messages(with_categories=true) %}
+            {% if messages %}
+                <ul class="flashes">
+                {% for category, message in messages %}
+                    <li class="{{ category }}">{{ message }}</li>
+                {% endfor %}
+                </ul>
+            {% endif %}
+        {% endwith %}
+        {% block content %}{% endblock %}
+    </main>
+    <footer>
+        <p>&copy; 2025 My IIT Bombay AI/ML Statistics Journey. All rights reserved.</p>
+    </footer>
+</body>
+</html>

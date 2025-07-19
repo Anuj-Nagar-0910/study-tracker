@@ -1,0 +1,202 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h2>Day {{ day.day_number }}: Study Details</h2>
+<form method="POST">
+    <div class="form-group">
+        <label for="status">Status:</label>
+        <select id="status" name="status">
+            <option value="Not Started" {% if day.status == 'Not Started' %}selected{% endif %}>Not Started</option>
+            <option value="Completed" {% if day.status == 'Completed' %}selected{% endif %}>Completed</option>
+            <option value="Partially Completed" {% if day.status == 'Partially Completed' %}selected{% endif %}>Partially Completed</option>
+            <option value="Skipped" {% if day.status == 'Skipped' %}selected{% endif %}>Skipped</option>
+        </select>
+    </div>
+    <div class="form-group">
+        <label for="notes">Notes for Day {{ day.day_number }}:</label>
+        <textarea id="notes" name="notes" rows="10">{{ day.notes }}</textarea>
+    </div>
+    <button type="submit">Update Progress</button>
+</form>
+
+<h3 class="daily-resources">Daily Agenda & Resources:</h3>
+<div class="resources-section">
+    {% if day.day_number == 1 %}
+    <h4>Day 1: Basic probability rules, permutations & combinations</h4>
+    <ul>
+        <li>Khan Academy drills: <a href="https://www.khanacademy.org/kmap/measurement-and-data-h/md224-statistics-and-probability" target="_blank">Probability & Statistics</a></li>
+    </ul>
+    {% elif day.day_number == 2 %}
+    <h4>Day 2: Conditional probability, Bayes theorem</h4>
+    <ul>
+        <li>StatQuest: <a href="https://statquest.org/video-index/" target="_blank">Statistics Fundamentals playlist</a></li>
+        <li>Khan Academy practice: <a href="https://www.khanacademy.org/math/ap-statistics/probability-ap" target="_blank">AP Statistics - Probability</a></li>
+    </ul>
+    {% elif day.day_number == 3 %}
+    <h4>Day 3: Random variables, PMF vs PDF</h4>
+    <ul>
+        <li>ISLR Ch. 2 §2.1-2.2: <a href="https://www.statlearning.com" target="_blank">An Introduction to Statistical Learning</a></li>
+    </ul>
+    {% elif day.day_number == 4 %}
+    <h4>Day 4: Expectation, variance, common discrete dists (Binomial, Poisson)</h4>
+    <ul>
+        <li>MIT 18.05 Lec 5-7: <a href="https://opencw.aprende.org/courses/mathematics/18-05-introduction-to-probability-and-statistics-spring-2014/" target="_blank">Introduction to Probability & Statistics</a></li>
+    </ul>
+    {% elif day.day_number == 5 %}
+    <h4>Day 5: Sampling distributions & CLT</h4>
+    <ul>
+        <li>ISLR §2.3: <a href="https://www.statlearning.com" target="_blank">An Introduction to Statistical Learning</a></li>
+        <li>StatQuest video: <a href="https://statquest.org/video-index/" target="_blank">Statistics Fundamentals playlist</a></li>
+    </ul>
+    {% elif day.day_number == 6 %}
+    <h4>Day 6: Uniform & Normal distributions</h4>
+    <ul>
+        <li>MIT 18.05 Lec 8-9 + practice: <a href="https://opencw.aprende.org/courses/mathematics/18-05-introduction-to-probability-and-statistics-spring-2014/" target="_blank">Introduction to Probability & Statistics</a></li>
+    </ul>
+    {% elif day.day_number == 7 %}
+    <h4>Day 7: Exponential, Gamma, Beta - focus on shapes & mean/var formulas</h4>
+    <ul>
+        <li>MIT 18.05 relevant sections: <a href="https://opencw.aprende.org/courses/mathematics/18-05-introduction-to-probability-and-statistics-spring-2014/" target="_blank">Introduction to Probability & Statistics</a></li>
+    </ul>
+    {% elif day.day_number == 8 %}
+    <h4>Day 8: Descriptive stats, visual summaries</h4>
+    <ul>
+        <li>ISLR lab: <a href="https://www.statlearning.com" target="_blank">An Introduction to Statistical Learning</a></li>
+        <li>Hands-on Python: `matplotlib` / `seaborn` for visualization.</li>
+    </ul>
+    {% elif day.day_number == 9 %}
+    <h4>Day 9: Covariance, correlation; independence</h4>
+    <ul>
+        <li>MIT 18.05 Lec 13: <a href="https://opencw.aprende.org/courses/mathematics/18-05-introduction-to-probability-and-statistics-spring-2014/" target="_blank">Introduction to Probability & Statistics</a></li>
+    </ul>
+    {% elif day.day_number == 10 %}
+    <h4>Day 10: Problem-set #1 (MIT 18.05 PS 1-2) timed (2 h) → self-grade</h4>
+    <ul>
+        <li>MIT 18.05 Problem Sets: <a href="https://ocw.mit.edu/courses/18-05-introduction-to-probability-and-statistics-spring-2022/pages/syllabus/" target="_blank">Syllabus (look for problem sets with solutions)</a></li>
+    </ul>
+    {% elif day.day_number == 11 %}
+    <h4>Day 11: Point & interval estimation, confidence intervals</h4>
+    <ul>
+        <li>MIT Lec 17-18: <a href="https://opencw.aprende.org/courses/mathematics/18-05-introduction-to-probability-and-statistics-spring-2014/" target="_blank">Introduction to Probability & Statistics</a></li>
+    </ul>
+    {% elif day.day_number == 12 %}
+    <h4>Day 12: Hypothesis testing (z, t, χ²)</h4>
+    <ul>
+        <li>StatQuest videos: <a href="https://statquest.org/video-index/" target="_blank">Statistics Fundamentals playlist</a></li>
+        <li>Khan AP Stats quizzes: <a href="https://www.khanacademy.org/math/ap-statistics/probability-ap" target="_blank">AP Statistics - Probability</a></li>
+    </ul>
+    {% elif day.day_number == 13 %}
+    <h4>Day 13: p-values, Type I/II error, power analysis</h4>
+    <ul>
+        <li>MIT Lec 19-20: <a href="https://opencw.aprende.org/courses/mathematics/18-05-introduction-to-probability-and-statistics-spring-2014/" target="_blank">Introduction to Probability & Statistics</a></li>
+    </ul>
+    {% elif day.day_number == 14 %}
+    <h4>Day 14: Bootstrapping & resampling</h4>
+    <ul>
+        <li>ISLR §5: <a href="https://www.statlearning.com" target="_blank">An Introduction to Statistical Learning</a></li>
+        <li>Small Python notebook implementation.</li>
+    </ul>
+    {% elif day.day_number == 15 %}
+    <h4>Day 15: Problem-set #2 (OCW PS 3): focus on CI & tests</h4>
+    <ul>
+        <li>MIT 18.05 Problem Sets: <a href="https://ocw.mit.edu/courses/18-05-introduction-to-probability-and-statistics-spring-2022/pages/syllabus/" target="_blank">Syllabus (look for problem sets with solutions)</a></li>
+    </ul>
+    {% elif day.day_number == 16 %}
+    <h4>Day 16: Vectors, matrix operations, norms</h4>
+    <ul>
+        <li>Gilbert Strang’s Linear Algebra lectures recap (optional refresh).</li>
+    </ul>
+    {% elif day.day_number == 17 %}
+    <h4>Day 17: Least-squares linear regression math</h4>
+    <ul>
+        <li>ISLR Ch. 3: <a href="https://www.statlearning.com" target="_blank">An Introduction to Statistical Learning</a></li>
+        <li>StatQuest: <a href="https://statquest.org/video-index/" target="_blank">ML playlists</a></li>
+    </ul>
+    {% elif day.day_number == 18 %}
+    <h4>Day 18: Gradient descent for simple regression</h4>
+    <ul>
+        <li>Derive & code in Python.</li>
+    </ul>
+    {% elif day.day_number == 19 %}
+    <h4>Day 19: Multiple regression, multicollinearity (VIF)</h4>
+    <ul>
+        <li>ISLR §3.3-3.4: <a href="https://www.statlearning.com" target="_blank">An Introduction to Statistical Learning</a></li>
+    </ul>
+    {% elif day.day_number == 20 %}
+    <h4>Day 20: Mini-project A: fit, interpret and validate a real Kaggle dataset (Boston Housing or similar)</h4>
+    <ul>
+        <li>Kaggle: Search for datasets like <a href="https://www.kaggle.com/datasets/altavish/boston-housing-dataset" target="_blank">Boston Housing</a> (note: availability may vary, use similar regression datasets if needed).</li>
+    </ul>
+    {% elif day.day_number == 21 %}
+    <h4>Day 21: Logistic regression theory</h4>
+    <ul>
+        <li>ISLR §4.3: <a href="https://www.statlearning.com" target="_blank">An Introduction to Statistical Learning</a></li>
+        <li>StatQuest video: <a href="https://statquest.org/video-index/" target="_blank">ML playlists</a></li>
+    </ul>
+    {% elif day.day_number == 22 %}
+    <h4>Day 22: k-Nearest Neighbours intuition (classification)</h4>
+    <ul>
+        <li>ISLR §2.3.3: <a href="https://www.statlearning.com" target="_blank">An Introduction to Statistical Learning</a></li>
+    </ul>
+    {% elif day.day_number == 23 %}
+    <h4>Day 23: Over-fitting & regularisation (Ridge/Lasso)</h4>
+    <ul>
+        <li>ISLR Ch. 6: <a href="https://www.statlearning.com" target="_blank">An Introduction to Statistical Learning</a></li>
+    </ul>
+    {% elif day.day_number == 24 %}
+    <h4>Day 24: Decision trees & impurity - brief overview</h4>
+    <ul>
+        <li>ISLR Ch. 8: <a href="https://www.statlearning.com" target="_blank">An Introduction to Statistical Learning</a></li>
+    </ul>
+    {% elif day.day_number == 25 %}
+    <h4>Day 25: Problem-set #3: mix of regression, classification, probability numericals</h4>
+    <ul>
+        <li>Use GATE-DA sample paper for time-bound practice: <a href="https://gate2024.iisc.ac.in/wp-content/uploads/2023/10/DataScienceAISampleQuestionPaper.pdf" target="_blank">Paper 1</a>, <a href="https://gate2024.iisc.ac.in/wp-content/uploads/2023/11/GATE2024DASampleQuestionPaperFinal.pdf" target="_blank">Paper 2</a></li>
+    </ul>
+    {% elif day.day_number == 26 %}
+    <h4>Day 26: Full-length mock test #1</h4>
+    <ul>
+        <li>Combine CMInDS, GATE-DA, MIT exam questions. Check CMInDS portal for official mocks: <a href="https://www.minds.iitb.ac.in/site/news-documents/f2f70006-e819-11ee-8859-92077df9182f.pdf" target="_blank">News Documents</a></li>
+    </ul>
+    {% elif day.day_number == 27 %}
+    <h4>Day 27: Deep review of wrong answers; flash-cards for formulas & theorems</h4>
+    <ul>
+        <li>Focus on understanding concepts you missed in Mock Test #1.</li>
+    </ul>
+    {% elif day.day_number == 28 %}
+    <h4>Day 28: Mock test #2 (90 min) + analysis</h4>
+    <ul>
+        <li>Simulate exam conditions with another mock test.</li>
+    </ul>
+    {% elif day.day_number == 29 %}
+    <h4>Day 29: Quick revision: cheat-sheet creation (distributions, test statistics, linear-alg ops)</h4>
+    <ul>
+        <li>Consolidate key formulas and concepts for quick recall.</li>
+    </ul>
+    {% elif day.day_number == 30 %}
+    <h4>Day 30: Light day: meditate, sleep well, and final StatQuest “Exam Tips” video</h4>
+    <ul>
+        <li>Rest and mentally prepare.</li>
+        <li>StatQuest: Search for relevant "exam tips" or "review" videos if available.</li>
+    </ul>
+    {% else %}
+    <p>No specific agenda listed for this day. Please refer to your general study plan for review or catch-up.</p>
+    {% endif %}
+
+    <h3 class="daily-resources">How to Use Your 2-3 Hours Daily:</h3>
+    <ul>
+        <li><strong>Concept (≈ 60 min)</strong> – watch/read core material.</li>
+        <li><strong>Guided Notes (≈ 30 min)</strong> – hand-write definitions & formulas.</li>
+        <li><strong>Hands-on / Coding (≈ 30 min)</strong> – small Python demo or OCW interactive checker.</li>
+        <li><strong>Quiz / Flashcards (≈ 30 min)</strong> – spaced-repetition (Anki) + Khan drills.</li>
+    </ul>
+
+    <h3 class="daily-resources">Additional Recommendations:</h3>
+    <ul>
+        <li><strong>Weekend Buffer:</strong> Keep weekends free for rest or to catch-up on any backlog.</li>
+        <li><strong>Discussion Forum:</strong> Join the StatQuest Discord or Kaggle Learn forums for peer doubt-clearing.</li>
+        <li><strong>Exam Logistics:</strong> Check CMInDS portal weekly for official mock tests & proctoring guidelines.</li>
+        <li><strong>Python Prep:</strong> Ensure familiarity with NumPy, pandas, matplotlib, scikit-learn basics (covered in Week 4-5 labs).</li>
+    </ul>
+</div>
+{% endblock %}

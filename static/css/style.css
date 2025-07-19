@@ -1,0 +1,469 @@
+/* static/css/style.css - Gemini Application Inspired Theme (Finalized) */
+
+/* Color Palette based on Gemini UI */
+:root {
+    --gemini-bg-primary: #1F1F1F;        /* Deep dark background */
+    --gemini-bg-secondary: #2E2E2E;      /* Slightly lighter background for cards/sections */
+    --gemini-text-primary: #E0E0E0;      /* Light gray for main text */
+    --gemini-text-secondary: #B0B0B0;    /* Muted gray for secondary text/labels */
+    --gemini-accent-blue: #8AB4F8;       /* Gemini's signature blue for links/highlights */
+    --gemini-border-color: #4A4A4A;      /* Darker gray for borders/separators */
+    --gemini-input-bg: #3C3C3C;          /* Input field background */
+    --gemini-button-bg: #8AB4F8;         /* Button background (Gemini blue) */
+    --gemini-button-hover: #AECBFA;      /* Lighter blue on hover */
+    --gemini-success: #6ACC6A;           /* Green for completed (similar to checkmarks) */
+    --gemini-warning: #FFD600;           /* Yellow for partially completed */
+    --gemini-error: #FF6B6B;             /* Red for skipped */
+    --gemini-shadow-light: rgba(0, 0, 0, 0.2); /* Subtle shadow for depth */
+}
+
+body {
+    font-family: 'Google Sans Text', 'Roboto', Arial, sans-serif; /* Google's preferred fonts */
+    line-height: 1.6;
+    margin: 0;
+    padding: 0;
+    background: var(--gemini-bg-primary);
+    color: var(--gemini-text-primary);
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+/* Scrollbar styles - subtle and clean */
+::-webkit-scrollbar {
+    width: 8px;
+}
+::-webkit-scrollbar-track {
+    background: var(--gemini-bg-secondary);
+}
+::-webkit-scrollbar-thumb {
+    background: var(--gemini-border-color);
+    border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+    background: var(--gemini-text-secondary);
+}
+
+header {
+    background: var(--gemini-bg-primary);
+    color: var(--gemini-text-primary);
+    padding: 1.2rem 25px; /* Added horizontal padding */
+    text-align: center;
+    border-bottom: 1px solid var(--gemini-border-color);
+    box-shadow: 0 2px 5px var(--gemini-shadow-light); /* Subtle shadow */
+    display: flex; /* Use flexbox for alignment */
+    align-items: center; /* Vertically center items */
+    justify-content: space-between; /* Space out items */
+    position: relative; /* For absolute positioning of logo */
+}
+
+.header-content {
+    display: flex;
+    align-items: center;
+    justify-content: center; /* Center the title and nav */
+    flex-grow: 1; /* Allow content to take available space */
+    position: relative; /* For title positioning */
+}
+
+header h1 {
+    margin: 0;
+    font-size: 1.8em; /* Slightly smaller for better fit */
+    font-weight: 500;
+    flex-grow: 1; /* Allow title to push nav right if needed */
+    text-align: center; /* Center title */
+    color: var(--gemini-text-primary); /* Ensure title color is primary */
+}
+
+.header-logo-link {
+    position: absolute; /* Position absolutely to the left */
+    left: 25px; /* Align to the left edge with padding */
+    top: 50%;
+    transform: translateY(-50%); /* Vertically center */
+    display: flex; /* To align image */
+    align-items: center;
+    height: 100%; /* Take full height of header for vertical centering */
+}
+
+.header-logo {
+    width: 30px; /* Smaller logo size, like Gemini */
+    height: auto;
+    margin-right: 10px; /* Space between logo and title (if title were next to it) */
+}
+
+
+nav {
+    margin-top: 0; /* No top margin needed with flexbox */
+    position: absolute; /* Position nav absolutely to the right */
+    right: 25px;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+nav a {
+    color: var(--gemini-accent-blue);
+    text-decoration: none;
+    margin: 0 10px; /* Smaller margin for compact nav */
+    font-weight: 500;
+    font-size: 0.95em; /* Slightly smaller font for nav */
+    transition: color 0.2s ease;
+}
+
+nav a:hover {
+    color: var(--gemini-button-hover);
+    text-decoration: underline;
+}
+
+main {
+    padding: 25px;
+    max-width: 1000px;
+    margin: 25px auto;
+    background: var(--gemini-bg-secondary);
+    border-radius: 8px;
+    box-shadow: 0 4px 10px var(--gemini-shadow-light);
+    flex-grow: 1;
+}
+
+.intro-section {
+    text-align: center;
+    margin-bottom: 35px;
+    padding-bottom: 25px;
+    border-bottom: 1px solid var(--gemini-border-color);
+}
+
+/* Removed .intro-section .logo as it's now in header */
+
+.intro-section h2 {
+    color: var(--gemini-text-primary);
+    font-size: 2em;
+    font-weight: 500;
+    margin-bottom: 15px;
+}
+
+.takeaway-box {
+    background: var(--gemini-input-bg); /* Darker internal box */
+    border: 1px solid var(--gemini-border-color);
+    padding: 20px;
+    border-radius: 8px;
+    margin: 25px 0;
+    text-align: left;
+    box-shadow: 0 2px 5px var(--gemini-shadow-light);
+}
+
+.takeaway-box h3 {
+    color: var(--gemini-accent-blue);
+    margin-top: 0;
+    font-weight: 500;
+    border-bottom: 1px solid var(--gemini-border-color);
+    padding-bottom: 10px;
+    margin-bottom: 15px;
+}
+
+.table-container {
+    overflow-x: auto;
+    margin: 25px auto;
+    max-width: 100%;
+}
+
+.table-container table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 0 auto;
+    font-size: 0.95em;
+}
+
+.table-container th, .table-container td {
+    border: 1px solid var(--gemini-border-color);
+    padding: 12px;
+    text-align: left;
+}
+
+.table-container th {
+    background-color: var(--gemini-input-bg);
+    font-weight: 500;
+    color: var(--gemini-text-secondary);
+    text-transform: none; /* Revert uppercase */
+    letter-spacing: normal;
+}
+
+.table-container tr:nth-child(even) {
+    background-color: var(--gemini-bg-secondary);
+}
+.table-container tr:nth-child(odd) {
+    background-color: var(--gemini-bg-primary); /* Use primary for odd rows */
+}
+
+
+.day-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 20px;
+    margin-top: 30px;
+}
+
+.day-card {
+    background: var(--gemini-input-bg); /* Darker card background */
+    padding: 18px;
+    border-radius: 8px;
+    text-align: center;
+    text-decoration: none;
+    color: var(--gemini-text-primary);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    border: 1px solid var(--gemini-border-color);
+    box-shadow: 0 2px 5px var(--gemini-shadow-light);
+}
+
+.day-card:hover {
+    transform: translateY(-4px) scale(1.01);
+    box-shadow: 0 5px 12px var(--gemini-shadow-light);
+}
+
+/* Status colors - subtle and clear */
+.day-card.completed {
+    background: rgba(106, 204, 106, 0.2); /* Light transparent green */
+    border: 1px solid var(--gemini-success);
+}
+
+.day-card.partially-completed {
+    background: rgba(255, 214, 0, 0.15); /* Light transparent yellow */
+    border: 1px solid var(--gemini-warning);
+}
+
+.day-card.skipped {
+    background: rgba(255, 107, 107, 0.15); /* Light transparent red */
+    border: 1px solid var(--gemini-error);
+}
+
+.day-card.not-started {
+    background: var(--gemini-input-bg);
+    border: 1px solid var(--gemini-border-color);
+}
+
+.day-card h3 {
+    margin-top: 0;
+    color: var(--gemini-text-primary);
+    font-weight: 500;
+}
+
+.day-card p {
+    font-size: 0.9em;
+    margin-bottom: 5px;
+    color: var(--gemini-text-secondary);
+}
+
+.last-updated {
+    font-size: 0.75em;
+    color: var(--gemini-text-secondary);
+    opacity: 0.8;
+}
+
+/* Forms and Inputs */
+.form-group {
+    margin-bottom: 18px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 6px;
+    font-weight: 500;
+    color: var(--gemini-text-secondary);
+    font-size: 0.95em;
+}
+
+.form-group select,
+.form-group textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid var(--gemini-border-color);
+    border-radius: 6px;
+    box-sizing: border-box;
+    background-color: var(--gemini-input-bg);
+    color: var(--gemini-text-primary);
+    font-family: 'Google Sans Text', Arial, sans-serif;
+    font-size: 1em;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.form-group select:focus,
+.form-group textarea:focus {
+    border-color: var(--gemini-accent-blue);
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(138, 180, 248, 0.3); /* Blue focus ring */
+}
+
+button {
+    background: var(--gemini-button-bg);
+    color: var(--gemini-bg-primary); /* Dark text on light button */
+    padding: 10px 20px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 1em;
+    font-weight: 500;
+    letter-spacing: 0.2px;
+    transition: background 0.2s ease, transform 0.1s ease;
+}
+
+button:hover {
+    background: var(--gemini-button-hover);
+    transform: translateY(-1px);
+}
+
+/* Flash Messages */
+.flashes {
+    list-style-type: none;
+    padding: 0;
+    margin-bottom: 20px;
+}
+
+.flashes li {
+    padding: 12px;
+    margin-bottom: 10px;
+    border-radius: 6px;
+    font-weight: 500;
+    font-size: 0.95em;
+    border-left: 4px solid;
+    background-color: var(--gemini-input-bg); /* Use a darker background for flash messages */
+}
+
+.flashes .success {
+    color: var(--gemini-success);
+    border-color: var(--gemini-success);
+}
+.flashes .warning { /* Added for potential warning messages */
+    color: var(--gemini-warning);
+    border-color: var(--gemini-warning);
+}
+.flashes .error { /* Added for potential error messages */
+    color: var(--gemini-error);
+    border-color: var(--gemini-error);
+}
+
+
+/* Resources and Lists */
+.daily-resources {
+    color: var(--gemini-accent-blue);
+    font-weight: 500;
+    margin-top: 25px;
+    padding-bottom: 8px;
+    border-bottom: 1px solid var(--gemini-border-color);
+}
+
+.resources-section ul {
+    list-style-type: disc; /* Revert to standard disc bullets */
+    padding-left: 20px;
+}
+
+.resources-section li {
+    margin-bottom: 8px;
+    padding-left: 0;
+    position: static; /* Revert static positioning */
+}
+
+.resources-section li::before {
+    content: none; /* Remove custom bullet */
+}
+
+.resources-section a {
+    color: var(--gemini-accent-blue);
+    text-decoration: none;
+    transition: color 0.2s ease;
+}
+
+.resources-section a:hover {
+    color: var(--gemini-button-hover);
+    text-decoration: underline;
+}
+
+footer {
+    text-align: center;
+    padding: 20px;
+    margin-top: 30px;
+    color: var(--gemini-text-secondary);
+    font-size: 0.8em;
+    border-top: 1px solid var(--gemini-border-color);
+    box-shadow: none; /* Revert inner glow */
+}
+
+/* --- New Styles for Learning Materials Cards --- */
+.materials-section-heading { /* Renamed for consistency */
+    text-align: center;
+    font-size: 1.8em;
+    margin-top: 40px;
+    margin-bottom: 30px;
+    color: var(--gemini-text-primary);
+    font-weight: 500;
+}
+
+.materials-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); /* Adjust card width */
+    gap: 20px;
+    margin-bottom: 40px;
+}
+
+.material-card {
+    background: var(--gemini-input-bg); /* Use input-bg for card background */
+    border: 1px solid var(--gemini-border-color);
+    border-radius: 8px;
+    box-shadow: 0 2px 5px var(--gemini-shadow-light);
+    overflow: hidden; /* Important for border-radius on children */
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.material-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 5px 15px var(--gemini-shadow-light);
+}
+
+.material-card details {
+    padding: 15px 20px; /* Padding inside the details element */
+    cursor: pointer;
+}
+
+.material-card summary {
+    font-weight: 500;
+    color: var(--gemini-accent-blue); /* Summary text in accent blue */
+    font-size: 1.1em;
+    list-style: none; /* Remove default triangle/arrow */
+    position: relative; /* For custom arrow */
+    padding-right: 25px; /* Space for custom arrow */
+}
+
+/* Custom arrow for details/summary */
+.material-card summary::before {
+    content: '►'; /* Right-pointing arrow */
+    position: absolute;
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%) rotate(0deg); /* Initial state */
+    transition: transform 0.2s ease;
+    color: var(--gemini-text-secondary); /* Arrow color */
+}
+
+.material-card details[open] summary::before {
+    transform: translateY(-50%) rotate(90deg); /* Down-pointing arrow when open */
+}
+
+.material-card ul {
+    list-style-type: disc;
+    padding-left: 20px;
+    margin-top: 15px; /* Space between summary and list */
+    border-top: 1px solid var(--gemini-border-color); /* Separator line */
+    padding-top: 15px;
+    margin-bottom: 0;
+}
+
+.material-card li {
+    margin-bottom: 8px;
+    color: var(--gemini-text-primary);
+}
+
+.material-card a {
+    color: var(--gemini-accent-blue);
+    text-decoration: none;
+}
+
+.material-card a:hover {
+    text-decoration: underline;
+    color: var(--gemini-button-hover);
+}

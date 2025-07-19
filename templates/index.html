@@ -1,0 +1,104 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="intro-section">
+    <h2>30-Day Statistics Boot-Camp for IIT Bombay’s AI/ML Diploma Screening</h2>
+
+    <div class="takeaway-box">
+        <h3>Main Takeaway:</h3>
+        <p>Focus on **probability, statistics, linear algebra, basic calculus and core ML concepts** that IIT Bombay’s Centre for Machine Intelligence & Data Science (C-MInDS) lists in its admissions test syllabus. A disciplined 30-day, 2-3 h/day weekday plan built around high-quality open resources (ISLR, MIT OCW, Khan Academy, StatQuest) will give you the depth expected for the Statistical Foundations course and the online screening exam.</p>
+    </div>
+
+    <h3>How the Screening Test Drives This Plan</h3>
+    <p>IIT Bombay’s official syllabus for the MS/PhD & Diploma entrance test covers:</p>
+    <div class="table-container">
+        <table>
+            <thead>
+                <tr>
+                    <th>Area</th>
+                    <th>Key Topics (exam)</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Probability & Statistics</td>
+                    <td>Descriptive stats, probability rules, random variables, estimation, regression</td>
+                </tr>
+                <tr>
+                    <td>Calculus</td>
+                    <td>Differentiation, integration, partial derivatives</td>
+                </tr>
+                <tr>
+                    <td>Linear Algebra</td>
+                    <td>Vectors, matrices, eigenvalues</td>
+                </tr>
+                <tr>
+                    <td>Algorithms & Computing</td>
+                    <td>Asymptotic notation, basic data structures</td>
+                </tr>
+                <tr>
+                    <td>ML Basics</td>
+                    <td>Over-fitting, gradient descent, classification/regression intuition</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <p>The ePG Diploma curriculum then deepens these themes in “Statistical Foundations of ML” and “Programming for ML & DS”. Your 30-day plan reflects exactly these layers.</p>
+
+    <h3 class="materials-section-heading">Learning Materials You’ll Use Repeatedly</h3>
+    <div class="materials-grid">
+        <div class="material-card">
+            <details>
+                <summary>Books / PDFs</summary>
+                <ul>
+                    <li><em>An Introduction to Statistical Learning</em> 2e (ISLR, free PDF & labs) - <a href="https://www.statlearning.com" target="_blank">Link</a></li>
+                    <li><em>Introduction to Probability & Statistics</em> (MIT OCW 18.05 notes + videos) - <a href="https://opencw.aprende.org/courses/mathematics/18-05-introduction-to-probability-and-statistics-spring-2014/" target="_blank">Link</a></li>
+                </ul>
+            </details>
+        </div>
+
+        <div class="material-card">
+            <details>
+                <summary>Interactive Courses</summary>
+                <ul>
+                    <li>Khan Academy Probability & AP Stats units for quick drills - <a href="https://www.khanacademy.org/kmap/measurement-and-data-h/md224-statistics-and-probability" target="_blank">Probability</a>, <a href="https://www.khanacademy.org/math/cc-seventh-grade-math/cc-7th-probability-statistics" target="_blank">7th Grade Probability</a>, <a href="https://www.khanacademy.org/math/ap-statistics/probability-ap" target="_blank">AP Statistics</a></li>
+                    <li>MIT Open Learning Library interactive 18.05 problem checkers - <a href="https://openlearninglibrary.mit.edu/courses/course-v1:MITx+18.05r_10+2022_Summer/about" target="_blank">Link</a></li>
+                </ul>
+            </details>
+        </div>
+
+        <div class="material-card">
+            <details>
+                <summary>Videos</summary>
+                <ul>
+                    <li>StatQuest “Statistics Fundamentals” & ML playlists for concept clarity - <a href="https://statquest.org/video-index/" target="_blank">Video Index</a>, <a href="https://www.statology.org/7-best-youtube-channels-statistics-free/" target="_blank">Best Channels</a></li>
+                    <li>Gilbert Strang’s Linear Algebra lectures (optional refresh)</li>
+                </ul>
+            </details>
+        </div>
+
+        <div class="material-card">
+            <details>
+                <summary>Practice Sets</summary>
+                <ul>
+                    <li>MIT OCW weekly problem sets (with solutions) - <a href="https://ocw.mit.edu/courses/18-05-introduction-to-probability-and-statistics-spring-2022/pages/syllabus/" target="_blank">Syllabus</a></li>
+                    <li>Khan Academy quizzes (auto-graded)</li>
+                    <li>GATE-DA sample paper for probability/ML numericals - <a href="https://gate2024.iisc.ac.in/wp-content/uploads/2023/10/DataScienceAISampleQuestionPaper.pdf" target="_blank">Paper 1</a>, <a href="https://gate2024.iisc.ac.in/wp-content/uploads/2023/11/GATE2024DASampleQuestionPaperFinal.pdf" target="_blank">Paper 2</a></li>
+                    <li>CMInDS sample tests if released (check weekly) - <a href="https://www.minds.iitb.ac.in/site/news-documents/f2f70006-e819-11ee-8859-92077df9182f.pdf" target="_blank">News Documents</a></li>
+                </ul>
+            </details>
+        </div>
+    </div>
+</div>
+
+<h2>Your 30-Day Study Plan Progress</h2>
+<div class="day-grid">
+    {% for day in days %}
+    <a href="{{ url_for('day_detail', day_num=day.day_number) }}" class="day-card {{ day.status | lower | replace(' ', '-') }}">
+        <h3>Day {{ day.day_number }}</h3>
+        <p>Status: {{ day.status }}</p>
+        <p class="last-updated">Last Updated: {{ day.last_updated.strftime('%Y-%m-%d %H:%M') }}</p>
+    </a>
+    {% endfor %}
+</div>
+{% endblock %}
